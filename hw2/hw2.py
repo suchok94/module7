@@ -1,3 +1,4 @@
+import random
 from functools import reduce
 
 # task 1
@@ -97,3 +98,60 @@ def fact(x):
 def filter_str_have_even_symbols_upper(arr:list):
     new_arr = ' '.join(map(lambda x: x.upper(), filter(lambda x: len(x)%2 == 0, arr)))
     return new_arr
+
+
+# Задачи на создание Функций- Генераторов
+
+# task 1
+def generator_numbers_multiples_5():
+    x = 5
+    while True:
+        yield x
+        x += 5
+
+
+# task 2
+def generator_square():
+    x = 1
+    while True:
+        yield x**2
+        x += 1
+
+
+# taks 3
+
+def generator_numbers_not_multiples_3(num):
+    for i in range(1, num+1, 1):
+        if not(i % 3 == 0):
+            yield i
+
+# task 4
+
+def generator_separation_word(word: str, lenght: int):
+    while len(word) >= lenght:
+        yield word[0:lenght:1]
+        word = word[1::]
+
+# task 5
+
+def generator_numbers_AtoB(num_a: int, num_b: int):
+    for i in range(num_a, num_b + 1, 2):
+        yield i
+
+# task 6
+
+def generator_random_infinity():
+    while True:
+        yield random.randint(0, 100)
+
+# task 7
+def generator_fibonacci():
+    x = 0
+    i = 1
+    yield x
+    yield i
+    while True:
+        yield i + x
+        x = i + x
+        yield i + x
+        i = i + x
